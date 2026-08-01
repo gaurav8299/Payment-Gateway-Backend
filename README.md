@@ -102,8 +102,8 @@ sequenceDiagram
 <br/>
 
 <div align="center">
-  <img src="docs/diagrams/architecture_overview.png" alt="Clean Architecture & Component Isolation" width="900"/>
-  <p><em>Clean Architecture & Hexagonal Adapter Components</em></p>
+  <img src="docs/diagrams/payment_flow.png" alt="Payment Processing Lifecycle Flow" width="900"/>
+  <p><em>End-to-End Payment Processing Lifecycle & Transactional Outbox Flow</em></p>
 </div>
 
 <br/>
@@ -117,7 +117,14 @@ sequenceDiagram
 
 <div align="center">
   <img src="docs/diagrams/coverage_report.png" alt="Pytest Test Suite Coverage Report" width="900"/>
-  <p><em>Comprehensive Pytest Coverage Report (112 Passed Tests)</em></p>
+  <p><em>Comprehensive Pytest Coverage Report (112 Passed Tests - 100% Success)</em></p>
+</div>
+
+<br/>
+
+<div align="center">
+  <h3>📄 Sample PDF Invoice Engine Output</h3>
+  <p>Generated dynamically using ReportLab: <a href="docs/sample_invoice.pdf">📥 Download Sample PDF Invoice (sample_invoice.pdf)</a></p>
 </div>
 
 ---
