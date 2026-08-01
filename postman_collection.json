@@ -1,0 +1,303 @@
+{
+  "info": {
+    "_postman_id": "a8f3412b-3489-4e78-bc91-88741dfa9291",
+    "name": "Payment Gateway Backend API (v1.0.0)",
+    "description": "Production API Collection for Google Antigravity Payment Gateway Backend. Includes Auth, Merchant Management, Customer CRM, Orders, Payments, Refunds, Wallets, Webhooks, Analytics, and Audit Logs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "accessToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "merchantPublishableKey",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "merchantSecretKey",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register User / Merchant",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"merchant_postman@example.com\",\n  \"password\": \"SecurePass123!\",\n  \"role\": \"MERCHANT\",\n  \"first_name\": \"Postman\",\n  \"last_name\": \"Demo\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register/",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register", ""]
+            }
+          }
+        },
+        {
+          "name": "Login (Obtain JWT)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"demo_merchant@gateway.com\",\n  \"password\": \"DemoPassword123!\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login/",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login", ""]
+            }
+          }
+        },
+        {
+          "name": "Refresh Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refresh\": \"YOUR_REFRESH_TOKEN_HERE\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/token/refresh/",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "token", "refresh", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Merchant Profile & API Keys",
+      "item": [
+        {
+          "name": "Get Merchant Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/merchant/profile/",
+              "host": ["{{baseUrl}}"],
+              "path": ["merchant", "profile", ""]
+            }
+          }
+        },
+        {
+          "name": "Generate API Key Pair",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Postman Integration Key\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/merchant/api-keys/",
+              "host": ["{{baseUrl}}"],
+              "path": ["merchant", "api-keys", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customer Management",
+      "item": [
+        {
+          "name": "List Customers",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/customers/",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers", ""]
+            }
+          }
+        },
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"phone\": \"+14155551000\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/customers/",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Idempotency-Key", "value": "idemp_ord_1001" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"1500.00\",\n  \"currency\": \"INR\",\n  \"description\": \"API Checkout Order\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders/",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", ""]
+            }
+          }
+        },
+        {
+          "name": "List Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders/",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "Create / Charge Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Idempotency-Key", "value": "idemp_pay_2002" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_id\": \"YOUR_ORDER_ID\",\n  \"amount\": \"1500.00\",\n  \"currency\": \"INR\",\n  \"payment_method\": \"CARD\",\n  \"gateway\": \"DUMMY\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/payments/",
+              "host": ["{{baseUrl}}"],
+              "path": ["payments", ""]
+            }
+          }
+        },
+        {
+          "name": "List Payments",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payments/",
+              "host": ["{{baseUrl}}"],
+              "path": ["payments", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Refunds",
+      "item": [
+        {
+          "name": "Create Refund",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Idempotency-Key", "value": "idemp_ref_3003" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payment_id\": \"YOUR_PAYMENT_ID\",\n  \"amount\": \"500.00\",\n  \"reason\": \"Product Return\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/refunds/",
+              "host": ["{{baseUrl}}"],
+              "path": ["refunds", ""]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Analytics & Audit Logs",
+      "item": [
+        {
+          "name": "Get Dashboard Overview Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/analytics/overview/",
+              "host": ["{{baseUrl}}"],
+              "path": ["analytics", "overview", ""]
+            }
+          }
+        },
+        {
+          "name": "List Audit Logs",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/audit-logs/",
+              "host": ["{{baseUrl}}"],
+              "path": ["audit-logs", ""]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

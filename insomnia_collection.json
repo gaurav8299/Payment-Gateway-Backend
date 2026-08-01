@@ -1,0 +1,68 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-08-01T12:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "wrk_payment_gateway",
+      "_type": "workspace",
+      "name": "Payment Gateway Backend API (v1.0.0)",
+      "description": "Production Insomnia REST Collection for Payment Gateway Services"
+    },
+    {
+      "_id": "env_base",
+      "_type": "environment",
+      "parentId": "wrk_payment_gateway",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:8000/api/v1",
+        "jwt_token": ""
+      }
+    },
+    {
+      "_id": "fld_auth",
+      "_type": "request_group",
+      "parentId": "wrk_payment_gateway",
+      "name": "Authentication"
+    },
+    {
+      "_id": "req_login",
+      "_type": "request",
+      "parentId": "fld_auth",
+      "name": "Login (JWT Token)",
+      "method": "POST",
+      "url": "{{ _.base_url }}/auth/login/",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"demo_merchant@gateway.com\",\n  \"password\": \"DemoPassword123!\"\n}"
+      }
+    },
+    {
+      "_id": "fld_payments",
+      "_type": "request_group",
+      "parentId": "wrk_payment_gateway",
+      "name": "Payments"
+    },
+    {
+      "_id": "req_create_payment",
+      "_type": "request",
+      "parentId": "fld_payments",
+      "name": "Create Payment",
+      "method": "POST",
+      "url": "{{ _.base_url }}/payments/",
+      "headers": [
+        { "name": "Authorization", "value": "Bearer {{ _.jwt_token }}" },
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "Idempotency-Key", "value": "insom_idemp_101" }
+      ],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"order_id\": \"YOUR_ORDER_ID\",\n  \"amount\": \"2500.00\",\n  \"currency\": \"INR\",\n  \"payment_method\": \"CARD\",\n  \"gateway\": \"DUMMY\"\n}"
+      }
+    }
+  ]
+}
