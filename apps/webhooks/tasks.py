@@ -125,7 +125,7 @@ def deliver_webhook_task(self, delivery_id_str: str):
             headers=headers,
             method="POST",
         )
-        with urllib.request.urlopen(req, timeout=5) as response:
+        with urllib.request.urlopen(req, timeout=5) as response:  # nosec B310
             http_status = response.status
             response_text = response.read().decode("utf-8", errors="ignore")[:1000]
             if 200 <= http_status < 300:

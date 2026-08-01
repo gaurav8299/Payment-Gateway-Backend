@@ -4,8 +4,6 @@
 [![Coverage Status](https://img.shields.io/badge/coverage-84%25-brightgreen?style=flat-square&logo=pytest)](https://github.com/gaurav8299/Payment-Gateway-Backend)
 [![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.12-blue?style=flat-square&logo=python)](https://www.python.org)
 [![Django Framework](https://img.shields.io/badge/django-5.0.7-092E20?style=flat-square&logo=django)](https://www.djangoproject.com)
-[![Docker Ready](https://img.shields.io/badge/docker-ready-2496ED?style=flat-square&logo=docker)](https://www.docker.com)
-[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Release](https://img.shields.io/badge/release-v1.0.0-blue?style=flat-square)](CHANGELOG.md)
 
 An enterprise-grade, high-concurrency **Payment Gateway Backend** built with Django 5, Django REST Framework, PostgreSQL, Redis, Celery, and RabbitMQ. Engineered following **Clean Architecture**, **Domain-Driven Design (DDD)**, and **Hexagonal (Ports & Adapters)** principles to support multi-tenant merchant operations, atomic wallet ledgers, idempotent API requests, and transactional outbox webhooks.
@@ -222,9 +220,8 @@ For detailed technical guides, explore the [`docs/`](docs/) directory:
 
 ---
 
-## 📜 License & Community
+## 📜 Community & Governance
 
-- **License**: Released under the [MIT License](LICENSE).
 - **Contributing**: Read our [Contributing Guidelines](CONTRIBUTING.md) before submitting a PR.
 - **Code of Conduct**: We adhere to the [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
 - **Security**: Report security vulnerabilities safely following our [Security Policy](SECURITY.md).

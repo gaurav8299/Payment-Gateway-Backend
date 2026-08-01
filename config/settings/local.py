@@ -31,4 +31,3 @@ if "pytest" in sys.modules or "test" in sys.argv:
     }
     CELERY_TASK_ALWAYS_EAGER = True
     CELERY_TASK_EAGER_PROPAGATES = True
-

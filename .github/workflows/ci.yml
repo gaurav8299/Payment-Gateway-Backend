@@ -70,7 +70,7 @@ jobs:
 
       - name: Code Quality & Linting Checks
         run: |
-          isort --check-only apps tests config
+          isort --profile black --check-only apps tests config
           black --check apps tests config
           flake8 apps config tests
 
