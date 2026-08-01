@@ -22,6 +22,21 @@ CACHES = {
     }
 }
 
+# Automatic fallback to local SQLite when running standalone outside Docker
+db_host = config("DB_HOST", default="localhost")  # noqa: F405
+if db_host == "db":
+    try:
+        import socket
+
+        socket.gethostbyname(db_host)
+    except socket.gaierror:
+        DATABASES = {
+            "default": {
+                "ENGINE": "django.db.backends.sqlite3",
+                "NAME": BASE_DIR / "db.sqlite3",  # noqa: F405
+            }
+        }
+
 if "pytest" in sys.modules or "test" in sys.argv:
     DATABASES = {
         "default": {
