@@ -145,8 +145,8 @@ sequenceDiagram
    ```
 
 4. Access Interactive API Docs:
-   - **Swagger UI**: [http://localhost:8000/api/docs/](http://localhost:8000/api/docs/)
-   - **Redoc**: [http://localhost:8000/api/redoc/](http://localhost:8000/api/redoc/)
+   - **Swagger UI**: [http://localhost:8000/api/v1/schema/swagger-ui/](http://localhost:8000/api/v1/schema/swagger-ui/)
+   - **Redoc**: [http://localhost:8000/api/v1/schema/redoc/](http://localhost:8000/api/v1/schema/redoc/)
 
 ---
 
