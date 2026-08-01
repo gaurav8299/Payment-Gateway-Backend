@@ -1,7 +1,7 @@
 # Payment Gateway Backend
 
-[![CI Pipeline](https://img.shields.io/github/actions/workflow/status/your-org/payment-gateway-backend/ci.yml?branch=main&style=flat-square&logo=github)](https://github.com/your-org/payment-gateway-backend/actions)
-[![Coverage Status](https://img.shields.io/badge/coverage-84%25-brightgreen?style=flat-square&logo=pytest)](https://github.com/your-org/payment-gateway-backend)
+[![CI Pipeline](https://img.shields.io/github/actions/workflow/status/gaurav8299/Payment-Gateway-Backend/ci.yml?branch=main&style=flat-square&logo=github)](https://github.com/gaurav8299/Payment-Gateway-Backend/actions)
+[![Coverage Status](https://img.shields.io/badge/coverage-84%25-brightgreen?style=flat-square&logo=pytest)](https://github.com/gaurav8299/Payment-Gateway-Backend)
 [![Python Version](https://img.shields.io/badge/python-3.10%20%7C%203.12-blue?style=flat-square&logo=python)](https://www.python.org)
 [![Django Framework](https://img.shields.io/badge/django-5.0.7-092E20?style=flat-square&logo=django)](https://www.djangoproject.com)
 [![Docker Ready](https://img.shields.io/badge/docker-ready-2496ED?style=flat-square&logo=docker)](https://www.docker.com)
@@ -130,8 +130,8 @@ sequenceDiagram
 
 1. **Clone Repository**:
    ```bash
-   git clone https://github.com/your-org/payment-gateway-backend.git
-   cd payment-gateway-backend
+   git clone https://github.com/gaurav8299/Payment-Gateway-Backend.git
+   cd Payment-Gateway-Backend
    ```
 
 2. **Launch Services**:
